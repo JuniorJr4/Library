@@ -7,9 +7,9 @@
   --tog-c-dim: calc(var(--tog-height) - (var(--tog-c-offset) * 2));
 
   /* (A2) COLORS */
-  --tog-off: #cacaca;
-  --tog-on: #2285f5;
-  --tog-c-back: #fff;
+  --tog-off: #E5E5E5;
+  --tog-on: #14213D;
+  --tog-c-back: #FCA311;
 
   /* (A3) SYMBOLS */
   --tog-indicate: "\2758";

@@ -1,4 +1,162 @@
-.book-card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+:root {
+  --space-black: #000000;
+  --space-purple: #14213D;
+  --space-orange: #FCA311;
+  --space-gray: #E5E5E5;
+  --space-white: #FFFFFF;
+  font-family: 'Roboto';
 }
+
+* {
+ 
+}
+
+body {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+}
+
+.header-title {
+  color: var(--space-orange);
+  font-size: 3rem;
+  margin: 0;
+}
+
+.main-title {
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 30px;
+}
+
+.add-button-wrapper {
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.add-btn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  height: 100px;
+  width: 225px;
+  background-color: var(--space-orange);
+  border: 5px solid var(--space-black);
+  color: var(--space-black);
+  border-radius: 10px;
+  z-index: 10;
+  
+}
+
+.main {
+  background-color: var(--space-purple);
+  color: var(--space-gray);
+  height: 100vh;
+}
+
+.book-card-container {
+  width: 100vw;
+  margin: 0 20px 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  justify-items: center;
+}
+
+.form-container {
+  width: 300px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media screen and (max-width: 405px) {
+  .book-card-container {
+    column-gap: 0;
+  }
+  
+}
+
+.book-card {
+  width: 175px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: var(--space-orange);
+  color: var(--space-black);
+  border: 5px solid var(--space-black);
+  padding: 10px;
+  
+}
+
+
+
+#myForm {
+  padding: 15px;
+  display: none;
+  position: fixed;
+  top: 90px;
+  right: 50%;
+  margin-right: -150px;
+  border-radius: 10px;
+  background-color: var(--space-orange);
+  color: var(--space-black);
+  border: 5px solid var(--space-black);
+  z-index: 10;
+}
+
+.pages-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+
+}
+
+input {
+  background: var(--space-purple);
+  color: var(--space-white);
+  height: 30px;
+  border-radius: 5px;
+  outline: 2px solid var(--space-black);
+  border: none;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+input:focus {
+  border: none;
+  outline: 3px solid var(--space-black);
+}
+
+
+.btn {
+  background-color: var(--space-purple);
+  color: var(--space-black);
+  border-radius: 5px;
+  height: 30px;
+  border-radius: 5px;
+  outline: 2px solid var(--space-black);
+  font-size: 1.2rem;
+  border: none;
+  width: 150px;
+}
+
+.form-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cancel {
+  margin-top: 10px;
+}
+
+
+
