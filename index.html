@@ -49,11 +49,12 @@
           <div class="pages-container">
             <b>Finished Reading?</b>
             <label class="tog round">
-              <input type="checkbox" />
+              <input type="hidden" value="false" name="read" > 
+              <input type="checkbox" value="true" name="read" class="form-tog" />
               <i></i>
             </label>
           </div>
-          
+
           <div class="form-btns">
             <button type="submit" class="btn">Submit</button>
             <button type="button" class="btn cancel" onclick="closeForm()">

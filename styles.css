@@ -66,7 +66,7 @@ body {
   width: 100vw;
   margin: 0 20px 20px 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
   justify-items: center;
 }
@@ -85,6 +85,7 @@ body {
 
 .book-card {
   width: 175px;
+  max-width: 300px;
   border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr;
@@ -92,7 +93,9 @@ body {
   color: var(--space-black);
   border: 5px solid var(--space-black);
   padding: 10px;
-  
+  justify-items: center;
+  gap: 10px;
+  font-weight: bold;
 }
 
 
@@ -156,6 +159,19 @@ input:focus {
 
 .cancel {
   margin-top: 10px;
+}
+
+.remove {
+  background-color: var(--space-purple);
+  color: var(--space-black);
+  border-radius: 5px;
+  height: 30px;
+  border-radius: 5px;
+  outline: 2px solid var(--space-black);
+  font-size: 1.2rem;
+  border: none;
+  width: 125px;
+  justify-self: center;
 }
 
 
