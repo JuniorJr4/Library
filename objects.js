@@ -1,3 +1,4 @@
+//CONSTRUCT HTML ELEMENTS
 const bookForm = document.getElementById("bookForm");
 const bookCardContainer = document.querySelector(".book-card-container");
 const addBtn = document.querySelector(".add-btn");
@@ -7,11 +8,15 @@ const header = document.querySelector(".header");
 const formTog = document.querySelector(".form-tog");
 const togBtns = document.querySelectorAll(".tog-btn");
 
+//INITIALIZE THE LIBRARY
 let myLibrary = [];
 
+//ADD FORM EVENT LISTENERS
 bookForm.addEventListener("submit", addBookToLibrary);
 addBtn.addEventListener("click", addBookBtn);
 
+//lIBRARY FUNCTIONS
+//UPDATE BOOK OBJECT ON BUTTON READ TOGGLE
 function getToggleValue(e) {
   console.log(e.target.checked);
   e.target.checked
@@ -20,6 +25,7 @@ function getToggleValue(e) {
   console.log(myLibrary);
 }
 
+//BRING UP FORM POP UP AND 
 function addBookBtn() {
   myForm.style.display = "block";
   header.style.opacity = "0.6";
@@ -28,6 +34,7 @@ function addBookBtn() {
   bookCardContainer.style.pointerEvents = "none";
 }
 
+//REMOVE BOOK FROM LIBRARY BY INDEX
 function removeBook(e) {
   myLibrary.splice(e.target.dataset.index, e.target.dataset.index + 1);
   let element = document.querySelector(`[data-index = '${e.target.dataset.index}']`);
@@ -38,6 +45,7 @@ function removeBook(e) {
   console.log(myLibrary);
 }
 
+//RESET FORM
 function closeForm() {
   myForm.style.display = "none";
   header.style.opacity = "1.0";
@@ -47,6 +55,7 @@ function closeForm() {
   bookForm.reset();
 }
 
+//BOOK OBJECT CREATED DIRECTLY FROM THE FORM SUBMIT
 // function Book(title, author, pages, read) {
 //   this.title = title;
 //   this.author = author;
@@ -65,12 +74,9 @@ function addBookToLibrary(e) {
   header.style.pointerEvents = "auto";
   bookCardContainer.style.opacity = "1.0";
   bookCardContainer.style.pointerEvents = "auto";
-  // console.log(myLibrary);
-  // console.log(myLibrary["0"]);
-
-  //console.log(Object.values(myLibrary[e.target.data-index]));
 }
 
+//CREATE ELEMENTS FROM EACH BOOK SUBMISSION
 function newBookCard(book) {
   const cardDiv = document.createElement("div");
   cardDiv.classList.add("book-card");
@@ -78,15 +84,15 @@ function newBookCard(book) {
   bookCardContainer.appendChild(cardDiv);
 
   const newTitle = document.createElement("div");
-  newTitle.textContent = "Book Title: " + book.title;
+  newTitle.textContent = book.title;
   cardDiv.appendChild(newTitle);
 
   const newAuthor = document.createElement("div");
-  newAuthor.textContent = "Author: " + book.author;
+  newAuthor.textContent = book.author;
   cardDiv.appendChild(newAuthor);
 
   const newPages = document.createElement("div");
-  newPages.textContent = "Total Pages: " + book.pages;
+  newPages.textContent = book.pages + ' pages';
   cardDiv.appendChild(newPages);
 
   const newSwitchLabel = document.createElement("label");
