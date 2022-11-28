@@ -10,6 +10,7 @@ const togBtns = document.querySelectorAll(".tog-btn");
 
 //INITIALIZE THE LIBRARY
 let myLibrary = [];
+let newBook;
 
 //ADD FORM EVENT LISTENERS
 bookForm.addEventListener("submit", addBookToLibrary);
@@ -20,12 +21,12 @@ addBtn.addEventListener("click", addBookBtn);
 function getToggleValue(e) {
   console.log(e.target.checked);
   e.target.checked
-    ? (myLibrary[e.target.dataset.index]["read"] = "true")
-    : (myLibrary[e.target.dataset.index]["read"] = "false");
+    ? (myLibrary[e.target.dataset.index]["read"] = true)
+    : (myLibrary[e.target.dataset.index]["read"] = false);
   console.log(myLibrary);
 }
 
-//BRING UP FORM POP UP AND 
+//BRING UP FORM POP UP AND
 function addBookBtn() {
   myForm.style.display = "block";
   header.style.opacity = "0.6";
@@ -37,7 +38,9 @@ function addBookBtn() {
 //REMOVE BOOK FROM LIBRARY BY INDEX
 function removeBook(e) {
   myLibrary.splice(e.target.dataset.index, e.target.dataset.index + 1);
-  let element = document.querySelector(`[data-index = '${e.target.dataset.index}']`);
+  let element = document.querySelector(
+    `[data-index = '${e.target.dataset.index}']`
+  );
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
@@ -55,25 +58,35 @@ function closeForm() {
   bookForm.reset();
 }
 
-//BOOK OBJECT CREATED DIRECTLY FROM THE FORM SUBMIT
-// function Book(title, author, pages, read) {
-//   this.title = title;
-//   this.author = author;
-//   this.pages = pages;
-//   this.read = read;
-// }
+//BOOK OBJECT 
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = bookForm.title.value;
+    this.author = bookForm.author.value;
+    this.pages = bookForm.pages.value;
+    this.read = formTog.checked;
+  }
+}
 
+//ADD TO LIBRARY
 function addBookToLibrary(e) {
   e.preventDefault();
-  const myNewBook = new FormData(e.target);
-  const newBookObj = Object.fromEntries(myNewBook.entries());
+  //CREATE BOOK OBJECT FROM FORM
+  // const myNewBook = new FormData(e.target);
+  // const newBookObj = Object.fromEntries(myNewBook.entries());
 
-  myLibrary.push(newBookObj);
-  newBookCard(newBookObj);
+  // myLibrary.push(newBookObj);
+  // newBookCard(newBookObj);
+  
+  newBook = new Book(bookForm.title, bookForm.author, bookForm.pages, bookForm.read);
+  myLibrary.push(newBook);
   header.style.opacity = "1.0";
   header.style.pointerEvents = "auto";
   bookCardContainer.style.opacity = "1.0";
   bookCardContainer.style.pointerEvents = "auto";
+  newBookCard(newBook);
+  closeForm();
+  console.log(myLibrary)
 }
 
 //CREATE ELEMENTS FROM EACH BOOK SUBMISSION
@@ -92,7 +105,7 @@ function newBookCard(book) {
   cardDiv.appendChild(newAuthor);
 
   const newPages = document.createElement("div");
-  newPages.textContent = book.pages + ' pages';
+  newPages.textContent = book.pages + " pages";
   cardDiv.appendChild(newPages);
 
   const newSwitchLabel = document.createElement("label");
@@ -118,7 +131,7 @@ function newBookCard(book) {
   removeBookBtn.classList.add("btn", "remove");
   removeBookBtn.textContent = "Remove";
   cardDiv.appendChild(removeBookBtn);
-  removeBookBtn.addEventListener('click', removeBook);
+  removeBookBtn.addEventListener("click", removeBook);
 
   console.log(myLibrary);
   newSwitchInput.addEventListener("change", getToggleValue);
